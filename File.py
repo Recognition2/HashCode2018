@@ -5,7 +5,3 @@ def read_file():
     first_row = all_data[0,:]
     all_data = all_data[1:all_data.shape[0],:]
     return first_row, all_data
-
-print(all_data)
-print("")
-print(first_row)
