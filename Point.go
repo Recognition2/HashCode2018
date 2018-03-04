@@ -1,8 +1,7 @@
 package main
 
 type Point struct {
-	row int
-	col int
+	row , col int
 }
 
 

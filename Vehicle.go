@@ -31,15 +31,19 @@ func (v *Vehicle) handleRide (r Ride, t int) {
 
 func (v *Vehicle) print(b *bytes.Buffer) {
 	// The amount of Rides this Vehicle performed
-	l := strconv.Itoa(len(v.handledRideIDs))
+	numRides := len(v.handledRideIDs)
 
-	// If the vehicle is still busy, then it hasn't fully completed the last ride.
+	if v.busy {	// If the vehicle is still busy, then it hasn't fully completed the last ride.
+		numRides -= 1
+	}
 
 
-	b.WriteString(l)
+	b.WriteString(strconv.Itoa(numRides))
+	b.WriteByte(' ')
 
 	// For every ride, print it's ID
-	for _, r := range v.handledRideIDs {
+	for i:= 0; i < numRides; i++ {
+		r := v.handledRideIDs[i]
 		s := strconv.Itoa(r)
 		b.WriteString(s)
 		b.WriteByte(' ')
